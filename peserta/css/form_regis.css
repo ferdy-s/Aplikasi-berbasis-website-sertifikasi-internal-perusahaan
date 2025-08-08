@@ -1,0 +1,422 @@
+:root {
+  --primary: #9b5eff;
+  --bg-dark: #0e0e0e;
+  --bg-card: #1c1c1c;
+  --text-light: #f2f2f2;
+  --text-muted: #999;
+  --text-link: #a782ff;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  margin: 0;
+  display: flex;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.sidebar {
+  background-color: #141414;
+  width: 260px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 999;
+  transition: transform 0.3s ease-in-out;
+}
+
+.sidebar h2 {
+  color: var(--primary);
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.sidebar a {
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar a.active,
+.sidebar a:hover {
+  background-color: #222;
+  color: var(--primary);
+}
+.sidebar-close-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: -1.5rem; /* Pastikan tidak nambah jarak */
+}
+
+/* Tombol close hanya di mobile */
+.sidebar-close {
+  background: #1c1c1c;
+  border: none;
+  color: #9b5eff;
+  font-size: 1.5rem;
+  width: 42px;
+  height: 42px;
+  margin-left: 11.4rem;
+  margin-top: -1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  padding: 0;
+  transition: background-color 0.2s ease;
+}
+
+.sidebar-close:hover {
+  background-color: #1c1c1c;
+}
+
+/* Sembunyikan di desktop */
+@media (min-width: 768px) {
+  .sidebar-close {
+    display: none !important;
+  }
+}
+.content {
+  flex-grow: 1;
+  margin-left: 260px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #141414;
+  position: sticky;
+  top: 0;
+  z-index: 998;
+}
+
+.topbar .left-group,
+.topbar .right-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.topbar h4 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.topbar h4.d-md-none {
+  color: white;
+  text-align: center;
+  flex: 1;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.toggle-sidebar {
+  cursor: pointer;
+  color: white;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.user-info .user-meta {
+  font-size: 0.6rem;
+  line-height: 1;
+  text-align: right;
+}
+
+.user-info img {
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+}
+
+.main-content {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    position: fixed;
+    left: 0;
+  }
+
+  .sidebar.active {
+    transform: translateX(0);
+  }
+
+  .content {
+    margin-left: 0;
+  }
+
+  .topbar h4.d-none.d-md-block {
+    display: none !important;
+  }
+
+  .topbar h4.d-md-none {
+    display: block !important;
+  }
+
+  .user-info .user-meta {
+    display: none;
+  }
+}
+
+/* ================== FORM WRAPPER ================== */
+.form-wrapper {
+  background-color: #151515;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  border: 1px solid rgba(155, 94, 255, 0.1);
+}
+
+.form-wrapper h3 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  color: #fff;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+/* ================== INPUT & LABEL ================== */
+.form-label {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: #aaa;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.form-control {
+  background-color: #1c1c1c;
+  border: 1px solid #333;
+  color: #f2f2f2;
+  border-radius: 10px;
+  padding: 0.8rem 1.1rem;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  width: 100%;
+}
+
+.form-control:focus {
+  border-color: #9b5eff;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(155, 94, 255, 0.2);
+}
+
+/* ================== BUTTON ================== */
+.btn-primary {
+  display: inline-block;
+  background-color: #9b5eff;
+  color: #fff;
+  border: none;
+  padding: 0.85rem 1.4rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: background-color 0.3s ease, transform 0.2s;
+  box-shadow: 0 4px 12px rgba(155, 94, 255, 0.2);
+}
+
+.btn-primary:hover {
+  background-color: #814eff;
+  transform: translateY(-2px);
+}
+
+/* ================== KATEGORI BIDANG ================== */
+.bidang-btn {
+  padding: 0.65rem 1.3rem;
+  font-weight: 600;
+  border: 1px solid rgba(155, 94, 255, 0.3);
+  background-color: #1c1c1c;
+  color: #ccc;
+  border-radius: 8px;
+  margin-right: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.bidang-btn:hover,
+.bidang-btn.active {
+  background-color: #9b5eff;
+  color: #fff;
+  border-color: #9b5eff;
+  box-shadow: 0 0 8px rgba(155, 94, 255, 0.4);
+}
+
+/* ================== CARD PENDAFTARAN ================== */
+.card-pendaftaran {
+  background-color: #1a1a1a;
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  margin-top: 0.1rem;
+  color: #eaeaea;
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+.card-pendaftaran h3 {
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
+
+/* ================== INFO GROUP ================== */
+.info-group {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1.2rem;
+  font-size: 0.92rem;
+}
+
+.info-group .label {
+  font-weight: 600;
+  color: #888;
+  width: 160px;
+  min-width: 160px;
+  letter-spacing: 0.3px;
+}
+
+.info-group a {
+  color: #9b5eff;
+  text-decoration: none;
+  word-break: break-word;
+}
+
+.info-group a:hover {
+  color: #caaaff;
+  text-decoration: underline;
+}
+
+/* ================== STATUS BOX ================== */
+.status {
+  background-color: #191919;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #ccc;
+  border-left: 3px solid var(--primary);
+}
+
+/* ================== READONLY INPUT ================== */
+input[readonly] {
+  background-color: #1b1b1b;
+  color: var(--text-light);
+  border: 1px solid #444;
+  cursor: not-allowed;
+}
+
+/* ================== RESPONSIVE ================== */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    position: fixed;
+    left: 0;
+  }
+
+  .sidebar.active {
+    transform: translateX(0);
+  }
+
+  .content {
+    margin-left: 0;
+  }
+
+  .main-content {
+    padding: 1.5rem;
+  }
+
+  .form-wrapper,
+  .card-pendaftaran {
+    padding: 1.5rem 1rem;
+    margin-top: 0;
+  }
+
+  .info-group {
+    flex-direction: column;
+  }
+
+  .info-group .label {
+    width: 100%;
+    margin-bottom: 0.3rem;
+  }
+
+  .bidang-btn {
+    display: inline-block;
+    margin-bottom: 0.75rem;
+  }
+}
+
+.footer {
+  width: 100%;
+  background-color: #141414;
+  color: var(--text-muted);
+  padding: 1.25rem 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: auto;
+  border-top: 1px solid #222;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.footer a {
+  color: var(--text-link);
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 0.3rem;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+  color: #c6a4ff;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    font-size: 0.8rem;
+    padding: 1rem;
+  }
+}
