@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: reliprove
+    runtime: docker
+    dockerfilePath: Dockerfile
+    plan: free
