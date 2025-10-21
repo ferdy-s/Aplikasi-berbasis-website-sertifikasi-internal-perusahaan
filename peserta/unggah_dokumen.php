@@ -95,6 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['simpan'])) {
         <a href="unggah_dokumen.php" class="active"><i class="fas fa-upload"></i> Upload Dokumen</a>
         <a href="status_asesmen.php"><i class="fas fa-clipboard-check"></i> Status Asesmen</a>
         <a href="sertifikat.php"><i class="fas fa-graduation-cap"></i> Sertifikat</a>
+        <a href="pengaturan.php"><i class="fas fa-gear"></i> Pengaturan</a>
         <a href="../logout.php"><i class="fas fa-sign-out-alt"></i> Keluar</a>
     </div>
 

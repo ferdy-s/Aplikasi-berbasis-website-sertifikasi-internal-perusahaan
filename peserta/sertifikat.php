@@ -51,6 +51,7 @@ $qr_image_url = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data="
         <a href="unggah_dokumen.php"><i class="fas fa-upload"></i> Upload Dokumen</a>
         <a href="status_asesmen.php"><i class="fas fa-clipboard-check"></i> Status Asesmen</a>
         <a href="sertifikat.php" class="active"><i class="fas fa-graduation-cap"></i> Sertifikat</a>
+        <a href="pengaturan.php"><i class="fas fa-gear"></i> Pengaturan</a>
         <a href="../logout.php"><i class="fas fa-sign-out-alt"></i> Keluar</a>
     </div>
 

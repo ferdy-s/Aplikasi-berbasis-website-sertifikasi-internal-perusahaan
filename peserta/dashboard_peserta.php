@@ -119,6 +119,7 @@ $cek_sertifikat = mysqli_num_rows(mysqli_query($conn, "
         <a href="unggah_dokumen.php"><i class="fas fa-upload"></i> Upload Dokumen</a>
         <a href="status_asesmen.php"><i class="fas fa-clipboard-check"></i> Status Asesmen</a>
         <a href="sertifikat.php"><i class="fas fa-graduation-cap"></i> Sertifikat</a>
+        <a href="pengaturan.php"><i class="fas fa-gear"></i> Pengaturan</a>
         <a href="../logout.php"><i class="fas fa-sign-out-alt"></i> Keluar</a>
     </div>
 
@@ -221,7 +222,7 @@ $cek_sertifikat = mysqli_num_rows(mysqli_query($conn, "
                     </a>
 
                     <!-- Tombol Unduh Panduan -->
-                    <a href="../dokumen/panduan_reliprove.pdf"
+                    <a href="../dokumen/PANDUAN_PENGISIAN.pdf"
                         download
                         style="flex: 1 1 200px;
               text-align: center;
@@ -318,6 +319,51 @@ $cek_sertifikat = mysqli_num_rows(mysqli_query($conn, "
             }
         });
     </script>
+    <script>
+        (function() {
+            const sidebar = document.getElementById('sidebar');
+            const toggles = sidebar.querySelectorAll('[data-toggle="submenu"]');
+
+            // Selalu mulai tertutup
+            toggles.forEach(t => t.setAttribute('aria-expanded', 'false'));
+
+            function closeAll() {
+                sidebar.querySelectorAll('.submenu.open').forEach(s => s.classList.remove('open'));
+                sidebar.querySelectorAll('[data-toggle="submenu"] .caret').forEach(c => c.classList.remove('rotate'));
+                toggles.forEach(t => t.setAttribute('aria-expanded', 'false'));
+            }
+
+            // Klik teks "Pengaturan" ATAU caret → toggle
+            toggles.forEach(toggle => {
+                toggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const panel = this.nextElementSibling;
+                    const isOpen = panel.classList.contains('open');
+                    closeAll();
+                    if (!isOpen) {
+                        panel.classList.add('open');
+                        this.setAttribute('aria-expanded', 'true');
+                        this.querySelector('.caret')?.classList.add('rotate');
+                    }
+                });
+            });
+
+            // (Opsional) tandai link aktif di submenu
+            const current = location.pathname.split('/').pop();
+            sidebar.querySelectorAll('.submenu a[href]').forEach(a => {
+                if (a.getAttribute('href').split('/').pop() === current) {
+                    a.classList.add('active');
+                    // Boleh buka otomatis saat halaman submenu (hapus jika ingin tetap tertutup)
+                    const toggle = a.closest('.submenu')?.previousElementSibling;
+                    if (toggle && toggle.matches('[data-toggle="submenu"]')) {
+                        toggle.click();
+                    }
+                }
+            });
+        })();
+    </script>
+
+
 </body>
 
 </html>

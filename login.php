@@ -366,9 +366,7 @@ Nama Lengkap      : ${nama}
 Email Terdaftar   : ${email}
 Waktu Pelaporan   : ${waktu}
 
-RINCIAN KENDALA PENGGUNA
-
-${pesan}
+RINCIAN KENDALA PENGGUNA : ${pesan}
 
 ASAL PENGIRIMAN
 

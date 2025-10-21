@@ -58,6 +58,7 @@ if ($id_pendaftaran) {
         <a href="unggah_dokumen.php"><i class="fas fa-upload"></i> Upload Dokumen</a>
         <a href="status_asesmen.php" class="active"><i class="fas fa-clipboard-check"></i> Status Asesmen</a>
         <a href="sertifikat.php"><i class="fas fa-graduation-cap"></i> Sertifikat</a>
+        <a href="pengaturan.php"><i class="fas fa-gear"></i> Pengaturan</a>
         <a href="../logout.php"><i class="fas fa-sign-out-alt"></i> Keluar</a>
     </div>
 
@@ -154,6 +155,19 @@ if ($id_pendaftaran) {
                         <?php endif; ?>
                     </div>
                 <?php endif; ?>
+                <?php
+                $kelulusan = $data['status_kelulusan'] ?? 'belum';
+                $bgKel = match ($kelulusan) {
+                    'lulus' => 'success',
+                    'tidak' => 'danger',
+                    default => 'secondary',
+                };
+                ?>
+                <div class="badge-item wide">
+                    <span><strong>Status Kelulusan</strong></span>
+                    <span class="badge bg-<?= $bgKel ?>"><?= strtoupper($kelulusan) ?></span>
+                </div>
+
             </div>
         </div>
 
